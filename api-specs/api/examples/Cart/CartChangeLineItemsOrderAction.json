@@ -1,4 +1,0 @@
-{
-  "action": "changeLineItemsOrder",
-  "lineItemOrder": ["{{lineItemId2}}", "{{lineItemId}}"]
-}
