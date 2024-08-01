@@ -9,7 +9,6 @@ enum AttributeReferenceTypeId {
     CATEGORY
     CHANNEL
     CUSTOMER
-    CUSTOMER_GROUP
     KEY_VALUE_DOCUMENT
     ORDER
     PRODUCT
