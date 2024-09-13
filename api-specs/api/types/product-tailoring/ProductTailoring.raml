@@ -62,3 +62,9 @@ properties:
     type: boolean
     description: |
       `true` if the `staged` data is different from the `current` data.
+  warnings?:
+    type: array
+    description: |
+      Non-empty array of Warnings returned for a request.
+    items:
+      type: ImageProcessingOngoingWarning

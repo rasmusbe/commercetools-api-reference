@@ -1,0 +1,13 @@
+#%RAML 1.0 DataType
+(package): Warning
+type: WarningObject
+displayName: ImageProcessingOngoingWarning
+discriminatorValue: ImageProcessingOngoing
+example: !include /../../examples/Warning/ImageProcessingOngoingWarning.json
+properties:
+  code:
+    type: string
+  message:
+    type: string
+    description: |
+      `"The image processing is still ongoing."`

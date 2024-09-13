@@ -3019,19 +3019,31 @@ uriParameters:
               type: boolean
               description: If `true`, only the staged ProductTailoringVariant is updated. If `false`, both the current and staged ProductTailoringVariant are updated.
           description: |
-            Upload a JPEG, PNG and GIF file to a [ProductTailoringVariant](ctp:api:type:ProductTailoringVariant). The maximum file size of the image is 10MB. `variant` or `sku` is required to update a specific ProductVariant. Produces the [ProductTailoringImageAdded](/projects/messages/product-catalog-messages#product-tailoring-image-added) Message when the `Small` version of the image has been uploaded to the CDN.
+            Upload a JPEG, PNG and GIF file to a [ProductTailoringVariant](ctp:api:type:ProductTailoringVariant). The maximum file size of the image is 10MB. `variant` or `sku` is required to update a specific ProductVariant. Produces the [ProductTailoringImageAdded](/projects/messages/product-catalog-messages#product-tailoring-image-added) Message after the image has been uploaded to the CDN.
           securedBy: [oauth_2_0: { scopes: ['manage_products:{projectKey}'] }]
           body:
-            type: file
-            fileTypes: ['image/jpeg', 'image/png', 'image/gif']
+            image/jpeg:
+              type: file
+            image/png:
+              type: file
+            image/gif:
+              type: file
           headers:
             Content-Type:
-              enum: ['image/jpeg', 'image/png', 'image/gif']
+              type: string
+              description: |
+                One of `image/jpeg`, `image/png`, or `image/gif`.
           responses:
             200:
               body:
-                type: ProductTailoring
-                example: !include ../examples/product-tailoring.example.json
+                application/json:
+                  type: ProductTailoring
+                  example: !include ../examples/product-tailoring.example.json
+            202:
+              body:
+                application/json:
+                  type: ProductTailoring
+                  example: !include ../examples/product-tailoring-with-image-processing-warning.example.json
   /key={productKey}:
     (methodName): withProductKey
     uriParameters:
@@ -3128,19 +3140,31 @@ uriParameters:
               type: boolean
               description: If `true`, only the staged ProductTailoringVariant is updated. If `false`, both the current and staged ProductTailoringVariant are updated.
           description: |
-            Upload a JPEG, PNG and GIF file to a [ProductTailoringVariant](ctp:api:type:ProductTailoringVariant). The maximum file size of the image is 10MB. `variant` or `sku` is required to update a specific ProductVariant. Produces the [ProductTailoringImageAdded](/projects/messages/product-catalog-messages#product-tailoring-image-added) Message when the `Small` version of the image has been uploaded to the CDN.
+            Upload a JPEG, PNG and GIF file to a [ProductTailoringVariant](ctp:api:type:ProductTailoringVariant). The maximum file size of the image is 10MB. `variant` or `sku` is required to update a specific ProductVariant. Produces the [ProductTailoringImageAdded](/projects/messages/product-catalog-messages#product-tailoring-image-added) Message after the image has been uploaded to the CDN.
           securedBy: [oauth_2_0: { scopes: ['manage_products:{projectKey}'] }]
           body:
-            type: file
-            fileTypes: ['image/jpeg', 'image/png', 'image/gif']
+            image/jpeg:
+              type: file
+            image/png:
+              type: file
+            image/gif:
+              type: file
           headers:
             Content-Type:
-              enum: ['image/jpeg', 'image/png', 'image/gif']
+              type: string
+              description: |
+                One of `image/jpeg`, `image/png`, or `image/gif`.
           responses:
             200:
               body:
-                type: ProductTailoring
-                example: !include ../examples/product-tailoring.example.json
+                application/json:
+                  type: ProductTailoring
+                  example: !include ../examples/product-tailoring.example.json
+            202:
+              body:
+                application/json:
+                  type: ProductTailoring
+                  example: !include ../examples/product-tailoring-with-image-processing-warning.example.json
 /quote-requests:
   type:
     baseDomain:
